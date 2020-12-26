@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tileserver-api
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    run: tileserver-api
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: tileserver-api
+  name: tileserver-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: tileserver-api
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        run: tileserver-api
+    spec:
+      containers:
+      - env:
+        - name: API_DOMAIN_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: openindoor-cm
+              key: apiDomainName
+        image: openindoor/tileserver-api:0.0.0
+        name: tileserver-api
+        ports:
+        - containerPort: 80
