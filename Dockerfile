@@ -51,8 +51,8 @@ RUN mkdir -p /usr/src/
 
 ARG tileserverTag=3.0.0
 RUN mkdir -p /usr/src/
-# ADD https://github.com/maptiler/tileserver-gl/archive/v${tileserverTag}.tar.gz /usr/src/tileserver-gl-v${tileserverTag}.tar.gz
-COPY ./tileserver-gl-v${tileserverTag}.tar.gz /usr/src/
+ADD https://github.com/maptiler/tileserver-gl/archive/v${tileserverTag}.tar.gz /usr/src/tileserver-gl-v${tileserverTag}.tar.gz
+# COPY ./tileserver-gl-v${tileserverTag}.tar.gz /usr/src/
 RUN cd /usr/src && tar xvfz tileserver-gl-v${tileserverTag}.tar.gz
 RUN mv /usr/src/tileserver-gl-${tileserverTag} /usr/src/app
 
