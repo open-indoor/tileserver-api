@@ -49,7 +49,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 
 RUN mkdir -p /usr/src/
 
-ARG tileserverTag=3.0.0
+ARG tileserverTag=3.1.1
 RUN mkdir -p /usr/src/
 ADD https://github.com/maptiler/tileserver-gl/archive/v${tileserverTag}.tar.gz /usr/src/tileserver-gl-v${tileserverTag}.tar.gz
 # COPY ./tileserver-gl-v${tileserverTag}.tar.gz /usr/src/

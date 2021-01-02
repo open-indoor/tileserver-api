@@ -5,7 +5,9 @@
       "fonts": "fonts",
       "styles": "styles",
       "mbtiles": "/data"
-    }
+    },
+    "minRendererPoolSizes": [8, 4, 2],
+    "maxRendererPoolSizes": [8, 4, 2]
   },
   "styles": {},
   "data": {
